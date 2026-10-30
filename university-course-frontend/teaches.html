@@ -1,0 +1,47 @@
+<!-- public/teaches.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Teaches Management</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    h1 { color: #222; }
+    form input { margin: 5px; padding: 6px; width: 180px; }
+    form button { padding: 6px 12px; background: green; color: white; border: none; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 8px; border: 1px solid #aaa; }
+    td button { background: none; border: none; cursor: pointer; margin: 0 5px; color: red; }
+  </style>
+</head>
+<body>
+  <h1>📚 Teaches Management</h1>
+
+  <form id="teachesForm">
+    <input type="number" id="faculty_id" placeholder="Faculty ID" required />
+    <input type="number" id="course_id" placeholder="Course ID" required />
+    <button type="submit">Add</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Faculty ID</th>
+        <th>Course ID</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="teachesTable"></tbody>
+  </table>
+
+  <script src="js/teaches.js"></script>
+  <script>
+  const user = JSON.parse(localStorage.getItem('loggedInUser'));
+  if (!user || user.role !== 'admin') {
+    window.location.href = 'unauthorized.html';
+  }
+</script>
+
+</body>
+</html>

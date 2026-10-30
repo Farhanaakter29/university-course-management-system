@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Enrollments</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    h1 { color: #333; }
+    input, button { margin: 5px; padding: 6px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { padding: 8px; border: 1px solid #999; }
+    button { cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>🎓 Enrollments</h1>
+
+  <form id="enrollForm">
+    <input type="number" id="student_id" placeholder="Student ID" required />
+    <input type="number" id="course_id" placeholder="Course ID" required />
+    <input type="date" id="enrollment_date" required />
+    <button type="submit">Add / Update</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Course ID</th>
+        <th>Enrollment Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="enrollmentsTable"></tbody>
+  </table>
+
+  <script src="js/enrollments.js"></script>
+  <script>
+  const user = JSON.parse(localStorage.getItem('loggedInUser'));
+  if (!user || user.role !== 'admin') {
+    window.location.href = 'unauthorized.html';
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!-- public/courses.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Course Management</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 6px;
+      margin: 5px;
+      width: 180px;
+    }
+
+    button {
+      padding: 6px 12px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    td button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    td button:first-child {
+      color: green;
+    }
+
+    td button:last-child {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>📚 Course Management</h1>
+
+  <form id="courseForm">
+    <input type="hidden" id="course_id" />
+    <input type="text" id="course_name" placeholder="Course Name" required />
+    <input type="text" id="course_code" placeholder="Course Code" required />
+    <input type="number" id="dept_id" placeholder="Department ID" required />
+    <input type="number" id="credit" placeholder="Credit" required />
+    <button type="submit">Save</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Name</th><th>Code</th><th>Dept ID</th><th>Credit</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="courseTable"></tbody>
+  </table>
+
+  <script src="js/courses.js"></script>
+  <script>
+  const user = JSON.parse(localStorage.getItem('loggedInUser'));
+  if (!user || user.role !== 'admin') {
+    window.location.href = 'unauthorized.html';
+  }
+</script>
+
+</body>
+</html>

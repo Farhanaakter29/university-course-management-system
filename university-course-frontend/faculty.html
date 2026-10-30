@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Faculty Management</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+    h1 { color: #333; }
+    form {
+      margin-bottom: 20px;
+    }
+    form input {
+      margin: 5px;
+      padding: 6px;
+      width: 180px;
+    }
+    form button {
+      padding: 6px 12px;
+      background: darkblue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #aaa;
+      text-align: left;
+    }
+    td button {
+      margin: 0 3px;
+      padding: 5px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+    td button:first-child { color: blue; }
+    td button:last-child { color: red; }
+  </style>
+</head>
+<body>
+  <h1>👩‍🏫 Faculty Management</h1>
+
+  <form id="facultyForm">
+    <input type="hidden" id="faculty_id" />
+    <input type="text" id="name" placeholder="Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="phone" placeholder="Phone" required />
+    <input type="number" id="dept_id" placeholder="Dept ID" required />
+    <button type="submit">Save</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Dept</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="facultyTable"></tbody>
+  </table>
+
+  <script src="js/faculty.js"></script>
+  <script>
+  const user = JSON.parse(localStorage.getItem('loggedInUser'));
+  if (!user || user.role !== 'admin') {
+    window.location.href = 'unauthorized.html';
+  }
+</script>
+
+</body>
+</html>

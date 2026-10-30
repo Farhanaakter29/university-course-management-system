@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Departments</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <h1>🏢 Departments</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Department Name</th>
+      </tr>
+    </thead>
+    <tbody id="departmentsTable"></tbody>
+  </table>
+
+  <script src="js/departments.js"></script>
+  <script>
+  const user = JSON.parse(localStorage.getItem('loggedInUser'));
+  if (!user || user.role !== 'admin') {
+    window.location.href = 'unauthorized.html';
+  }
+</script>
+
+</body>
+</html>

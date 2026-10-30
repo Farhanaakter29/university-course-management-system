@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Management</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    h1 { color: #333; }
+    form { margin-bottom: 20px; }
+    input, button { padding: 6px; margin: 5px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #aaa; padding: 8px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>👤 User Management</h1>
+
+  <!-- Add User Form -->
+  <form id="userForm">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <input type="text" id="role" placeholder="Role (e.g. admin/user)" required>
+    <button type="submit">Add User</button>
+  </form>
+
+  <!-- Display Users -->
+  <table>
+    <thead>
+      <tr><th>Username</th><th>Role</th></tr>
+    </thead>
+    <tbody id="userTable"></tbody>
+  </table>
+
+  <script src="js/users.js"></script>
+
+  <!-- 🔒 Admin Role Protection -->
+  <script>
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (!user || user.role !== 'admin') {
+      window.location.href = 'unauthorized.html';
+    }
+  </script>
+</body>
+</html>
